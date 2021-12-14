@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class Calculator {
     public static int result;
@@ -9,52 +8,47 @@ public class Calculator {
     }
 
     public static void startCalc() {
+        System.out.println("Введите первый операнд");
+        Scanner scanFirstOperator = new Scanner(System.in);
+        String firstOperator = scanFirstOperator.nextLine();
+        System.out.println("Введите оператор");
+        Scanner scanOperand = new Scanner(System.in);
+        String operand = scanOperand.nextLine();
+        System.out.println("Введите второй операнд");
+        Scanner scanSecondOperand = new Scanner(System.in);
+        String secondOperand = scanSecondOperand.nextLine();
 
-        System.out.println("Введите пример");
-        Scanner scanCalc = new Scanner(System.in);
-        String inputCalc = scanCalc.nextLine();
-        String[] arrayInput = inputCalc.trim().split("");
-        String[] removedNull = Arrays.stream(arrayInput)
-                .filter(value ->
-                        " ".equals(value) == false
-                )
-                .toArray(size -> new String[size]);
-
-        if (removedNull[1].charAt(0) == '+') {
-            result = addition(toInt(removedNull[0]), toInt(removedNull[2]));
-            System.out.println(removedNull[0] + " + " + removedNull[2] + " = " + result);
+        if (operand.charAt(0) == '+') {
+            result = addition(toInt(firstOperator), toInt(secondOperand));
+            System.out.println(firstOperator + " + " + secondOperand + " = " + result);
             startCalc();
-        } else if (removedNull[1].charAt(0) == '-') {
-            result = subtraction(toInt(removedNull[0]), toInt(removedNull[2]));
-            System.out.println(removedNull[0] + " - " + removedNull[2] + " = " + result);
+        } else if (operand.charAt(0) == '-') {
+            result = subtraction(toInt(firstOperator), toInt(secondOperand));
+            System.out.println(firstOperator + " - " + secondOperand + " = " + result);
             startCalc();
-        } else if (removedNull[1].charAt(0) == '*') {
-            result = multiplication(toInt(removedNull[0]), toInt(removedNull[2]));
-            System.out.println(removedNull[0] + " * " + removedNull[2] + " = " + result);
+        } else if (operand.charAt(0) == '*') {
+            result = multiplication(toInt(firstOperator), toInt(secondOperand));
+            System.out.println(firstOperator + " * " + secondOperand + " = " + result);
             startCalc();
-        } else if (removedNull[1].charAt(0) == '/') {
-            result = division(toInt(removedNull[0]), toInt(removedNull[2]));
-            System.out.println(removedNull[0] + " / " + removedNull[2] + " = " + result);
+        } else if (operand.charAt(0) == '/') {
+            result = division(toInt(firstOperator), toInt(secondOperand));
+            System.out.println(firstOperator + " / " + secondOperand + " = " + result);
             startCalc();
-        } else if (removedNull[1].charAt(0) == '^') {
-            result = pow(toInt(removedNull[0]), toInt(removedNull[2]));
-            System.out.println(removedNull[0] + " ^ " + removedNull[2] + " = " + result);
+        } else if (operand.charAt(0) == '^') {
+            result = pow(toInt(firstOperator), toInt(secondOperand));
+            System.out.println(firstOperator + " ^ " + secondOperand + " = " + result);
             startCalc();
-        } else if (removedNull[1].charAt(0) == '%') {
-            result = remaind(toInt(removedNull[0]), toInt(removedNull[2]));
-            System.out.println(removedNull[0] + " % " + removedNull[2] + " = " + result);
+        } else if (operand.charAt(0) == '%') {
+            result = remaind(toInt(firstOperator), toInt(secondOperand));
+            System.out.println(firstOperator + " % " + secondOperand + " = " + result);
             startCalc();
         }
-
-
     }
-
 
     public static int toInt(String str) {
         try {
             int i = Integer.parseInt(str.trim());
             return i;
-
         } catch (NumberFormatException e) {
             System.err.println("Неправильный формат строки!");
             return 0;
@@ -87,6 +81,5 @@ public class Calculator {
     public static int remaind(int x, int y) {
         return x % y;
     }
-
 }
 
