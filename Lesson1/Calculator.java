@@ -8,50 +8,34 @@ public class Calculator {
     }
 
     public static void startCalc() {
-        System.out.println("Введите первый операнд");
-        Scanner scanFirstOperator = new Scanner(System.in);
-        String firstOperator = scanFirstOperator.nextLine();
-        System.out.println("Введите оператор");
-        Scanner scanOperand = new Scanner(System.in);
-        String operand = scanOperand.nextLine();
-        System.out.println("Введите второй операнд");
-        Scanner scanSecondOperand = new Scanner(System.in);
-        String secondOperand = scanSecondOperand.nextLine();
+        while(true){
+            System.out.println("Введите первый операнд");
+            Scanner scan = new Scanner(System.in);
+            int a = scan.nextInt();
+            System.out.println("Введите оператор");
+            char mathOperation = scan.next().charAt(0);
+            System.out.println("Введите второй операнд");
+            int b = scan.nextInt();
 
-        if (operand.charAt(0) == '+') {
-            result = addition(toInt(firstOperator), toInt(secondOperand));
-            System.out.println(firstOperator + " + " + secondOperand + " = " + result);
-            startCalc();
-        } else if (operand.charAt(0) == '-') {
-            result = subtraction(toInt(firstOperator), toInt(secondOperand));
-            System.out.println(firstOperator + " - " + secondOperand + " = " + result);
-            startCalc();
-        } else if (operand.charAt(0) == '*') {
-            result = multiplication(toInt(firstOperator), toInt(secondOperand));
-            System.out.println(firstOperator + " * " + secondOperand + " = " + result);
-            startCalc();
-        } else if (operand.charAt(0) == '/') {
-            result = division(toInt(firstOperator), toInt(secondOperand));
-            System.out.println(firstOperator + " / " + secondOperand + " = " + result);
-            startCalc();
-        } else if (operand.charAt(0) == '^') {
-            result = pow(toInt(firstOperator), toInt(secondOperand));
-            System.out.println(firstOperator + " ^ " + secondOperand + " = " + result);
-            startCalc();
-        } else if (operand.charAt(0) == '%') {
-            result = remaind(toInt(firstOperator), toInt(secondOperand));
-            System.out.println(firstOperator + " % " + secondOperand + " = " + result);
-            startCalc();
-        }
-    }
-
-    public static int toInt(String str) {
-        try {
-            int i = Integer.parseInt(str.trim());
-            return i;
-        } catch (NumberFormatException e) {
-            System.err.println("Неправильный формат строки!");
-            return 0;
+            if (mathOperation == '+') {
+                result = addition(a, b);
+                System.out.println(a + " + " + b + " = " + result);
+            } else if (mathOperation == '-') {
+                result = subtraction(a, b);
+                System.out.println(a + " - " + b + " = " + result);
+            } else if (mathOperation == '*') {
+                result = multiplication(a, b);
+                System.out.println(a + " * " + b + " = " + result);
+            } else if (mathOperation == '/') {
+                result = division(a, b);
+                System.out.println(a + " / " + b + " = " + result);
+            } else if (mathOperation == '^') {
+                result = pow(a, b);
+                System.out.println(a + " ^ " + b + " = " + result);
+            } else if (mathOperation == '%') {
+                result = remaind(a, b);
+                System.out.println(a + " % " + b + " = " + result);
+            }
         }
     }
 
