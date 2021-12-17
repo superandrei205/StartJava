@@ -1,57 +1,52 @@
 import java.util.Scanner;
 
 public class Calculator {
-    public static int result;
-
     public static void main(String[] args) {
         startCalc();
     }
 
     public static void startCalc() {
-        while(true){
-            System.out.println("Введите первый операнд");
+        int result = 0;
+        while(true) {
+            System.out.println("Введите первое число");
             Scanner scan = new Scanner(System.in);
             int a = scan.nextInt();
-            System.out.println("Введите оператор");
+            System.out.println("Введите математическую операцию");
             char mathOperation = scan.next().charAt(0);
-            System.out.println("Введите второй операнд");
+            System.out.println("Введите второе число");
             int b = scan.nextInt();
 
             if (mathOperation == '+') {
-                result = addition(a, b);
-                System.out.println(a + " + " + b + " = " + result);
+                result = summation(a, b);
             } else if (mathOperation == '-') {
-                result = subtraction(a, b);
-                System.out.println(a + " - " + b + " = " + result);
+                result = subtract(a, b);
             } else if (mathOperation == '*') {
-                result = multiplication(a, b);
-                System.out.println(a + " * " + b + " = " + result);
+                result = multiply(a, b);
             } else if (mathOperation == '/') {
-                result = division(a, b);
-                System.out.println(a + " / " + b + " = " + result);
+                result = divide(a, b);
             } else if (mathOperation == '^') {
                 result = pow(a, b);
-                System.out.println(a + " ^ " + b + " = " + result);
             } else if (mathOperation == '%') {
-                result = remaind(a, b);
-                System.out.println(a + " % " + b + " = " + result);
+                result = getRemaind(a, b);
             }
+
+            System.out.println(a + " " + mathOperation + " " + b + " = " + result);
         }
     }
 
-    public static int addition(int x, int y) {
+    public static int summation(int x, int y) {
         return x + y;
     }
 
-    public static int subtraction(int x, int y) {
+    public static int subtract(int x, int y) {
         return x - y;
     }
 
-    public static int multiplication(int x, int y) {
+    public static int multiply(int x, int y) {
         return x * y;
     }
 
-    public static int division(int x, int y) {
+    public static int divide(int x, int y) {
         return x / y;
     }
 
@@ -62,7 +57,7 @@ public class Calculator {
             return 1;
     }
 
-    public static int remaind(int x, int y) {
+    public static int getRemaind(int x, int y) {
         return x % y;
     }
 }
