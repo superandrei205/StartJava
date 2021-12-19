@@ -6,15 +6,15 @@ public class Person {
     int age = 29;
 
     void walk() {
-        System.out.println();
+        System.out.println("Идет");
     }
 
-    boolean sitDown() {
+    boolean sit() {
         return true;
     }
 
     void run() {
-        System.out.println();
+        System.out.println("Бежит");
     }
 
     String say() {
