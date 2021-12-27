@@ -8,42 +8,26 @@ public class Calculator {
 
         switch (mathOperation) {
             case '+':
-                result = summation(a, b);
+                result = a + b;
                 break;
             case '-':
-                result = subtract(a, b);
+                result = a - b;
                 break;
             case '*':
-                result = multiply(a, b);
+                result = a * b;
                 break;
             case '/':
-                result = divide(a, b);
+                result = a / b;
                 break;
             case '^':
                 result = pow(a, b);
                 break;
             case '%':
-                result = getRemaind(a, b);
+                result = a % b;
                 break;
         }
 
         return result;
-    }
-
-    private static int summation(int x, int y) {
-        return x + y;
-    }
-
-    private static int subtract(int x, int y) {
-        return x - y;
-    }
-
-    private static int multiply(int x, int y) {
-        return x * y;
-    }
-
-    private static int divide(int x, int y) {
-        return x / y;
     }
 
     private static int pow(int base, int powerRaised) {
@@ -51,10 +35,6 @@ public class Calculator {
             return (base * pow(base, powerRaised - 1));
         else
             return 1;
-    }
-
-    private static int getRemaind(int x, int y) {
-        return x % y;
     }
 
     public void setA(int a) {
