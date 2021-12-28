@@ -41,17 +41,17 @@ public class GuessNumber {
     }
 
     private boolean compareNumbers(Player player) {
-        if (player.getNumber() == this.randomNumber) {
+        if (player.getNumber() == randomNumber) {
             System.out.println("Победил игрок с именем : " + player.getName());
+            setRandomNumber();
             return true;
-        } else {
-            if (player.getNumber() > this.randomNumber) {
-                System.out.println("Данное число больше того, что загадал компьютер");
-            } else {
-                System.out.println("Данное число меньше того, что загадал компьютер");
-            }
-            toggle = !toggle;
-            return false;
         }
+        if (player.getNumber() > randomNumber) {
+            System.out.println("Данное число больше того, что загадал компьютер");
+        } else {
+            System.out.println("Данное число меньше того, что загадал компьютер");
+        }
+        toggle = !toggle;
+        return false;
     }
 }

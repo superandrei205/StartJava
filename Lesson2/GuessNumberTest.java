@@ -20,7 +20,6 @@ public class GuessNumberTest {
         System.out.println("Хотите продолжить игру? [yes/no]:");
         String answer = scan.next();
         if (answer.equals("yes")) {
-            game.setRandomNumber();
             game.playGame(player1, player2);
             createQuestionToContinue(player1, player2, game);
         } else if (answer.equals("no")) {
