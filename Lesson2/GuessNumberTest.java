@@ -6,9 +6,11 @@ public class GuessNumberTest {
     public static void main(String[] args) {
         Player player1 = createPlayer(1);
         Player player2 = createPlayer(2);
-        GuessNumber game = new GuessNumber(player1, player2);
-        game.playGame(player1,player2);
-        createQuestionToContinue(player1, player2, game);
+        while (true) {
+            GuessNumber game = new GuessNumber(player1, player2);
+            game.playGame();
+            if (!createQuestionToContinue()) break;
+        }
     }
 
     private static Player createPlayer(int count) {
@@ -16,16 +18,15 @@ public class GuessNumberTest {
         return new Player(scan.nextLine());
     }
 
-    private static void createQuestionToContinue(Player player1, Player player2, GuessNumber game) {
-        System.out.println("Хотите продолжить игру? [yes/no]:");
-        String answer = scan.next();
-        if (answer.equals("yes")) {
-            game.playGame(player1, player2);
-            createQuestionToContinue(player1, player2, game);
-        } else if (answer.equals("no")) {
-            return;
-        } else {
-            createQuestionToContinue(player1, player2, game);
+    private static boolean createQuestionToContinue() {
+        while (true) {
+            System.out.println("Хотите продолжить игру? [yes/no]:");
+            String answer = scan.next();
+            if ("yes".equals(answer)) {
+                return true;
+            } else if ("no".equals(answer)) {
+                return false;
+            }
         }
     }
 }
