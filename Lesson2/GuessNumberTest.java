@@ -6,11 +6,10 @@ public class GuessNumberTest {
     public static void main(String[] args) {
         Player player1 = createPlayer(1);
         Player player2 = createPlayer(2);
-        while (true) {
+        do {
             GuessNumber game = new GuessNumber(player1, player2);
-            game.playGame();
-            if (!createQuestionToContinue()) break;
-        }
+            game.play();
+        } while (isNext());
     }
 
     private static Player createPlayer(int count) {
@@ -18,15 +17,15 @@ public class GuessNumberTest {
         return new Player(scan.nextLine());
     }
 
-    private static boolean createQuestionToContinue() {
-        while (true) {
+    private static boolean isNext() {
+        String answer = "";
+        while (!"yes".equals(answer)) {
             System.out.println("Хотите продолжить игру? [yes/no]:");
-            String answer = scan.next();
-            if ("yes".equals(answer)) {
-                return true;
-            } else if ("no".equals(answer)) {
+            answer = scan.next();
+            if ("no".equals(answer)) {
                 return false;
             }
         }
+        return true;
     }
 }

@@ -9,25 +9,17 @@ public class GuessNumber {
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
-        setRandomNumber();
-    }
-
-    public void setRandomNumber() {
         this.randomNumber = 1 + (int) (Math.random() * 100);
     }
 
-    public void playGame() {
+    public void play() {
         Player currentPlayer = player1;
         while (true) {
             inputNumber(currentPlayer);
-            if(compareNumbers(currentPlayer)){
+            if (compareNumbers(currentPlayer)) {
                 break;
             }
-            if (currentPlayer == player1) {
-                currentPlayer = player2;
-            } else {
-                currentPlayer = player1;
-            }
+            currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
     }
 
@@ -39,7 +31,6 @@ public class GuessNumber {
     private boolean compareNumbers(Player player) {
         if (player.getNumber() == randomNumber) {
             System.out.println("Победил игрок с именем : " + player.getName());
-            setRandomNumber();
             return true;
         }
         if (player.getNumber() > randomNumber) {
