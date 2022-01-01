@@ -1,3 +1,5 @@
+package src.com.startjava.lesson_1.game;
+
 public class MyFirstGame {
     public static int randomNumber;
     private static int startRange = 1;
