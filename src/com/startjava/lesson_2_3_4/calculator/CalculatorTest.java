@@ -17,7 +17,7 @@ public class CalculatorTest {
 
     private static void createQuestionToContinue() {
         System.out.println("Хотите продолжить вычисления? [yes/no]:");
-        String answer = scan.next();
+        String answer = scan.nextLine();
         if (answer.equals("yes")) {
             createCalc();
             createQuestionToContinue();
