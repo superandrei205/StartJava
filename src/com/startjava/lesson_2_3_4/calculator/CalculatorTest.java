@@ -1,4 +1,4 @@
-package src.com.startjava.lesson_2.calculator;
+package src.com.startjava.lesson_2_3_4.calculator;
 import java.util.Scanner;
 
 public class CalculatorTest {
@@ -11,14 +11,8 @@ public class CalculatorTest {
 
     private static void createCalc() {
         Calculator calculator = new Calculator();
-        System.out.println("Введите первое число");
-        calculator.setA(scan.nextInt());
-        System.out.println("Введите математическую операцию");
-        calculator.setMathOperation(scan.next().charAt(0));
-        System.out.println("Введите второе число");
-        calculator.setB(scan.nextInt());
-        int result = calculator.calc(calculator.getA(), calculator.getMathOperation(), calculator.getB());
-        System.out.println(calculator.getA() + " " + calculator.getMathOperation() + " " + calculator.getB() + " = " + result);
+        System.out.println("Введите математическое выражение: ");
+        System.out.println(calculator.calculate(scan.nextLine()));
     }
 
     private static void createQuestionToContinue() {
