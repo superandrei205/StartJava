@@ -1,4 +1,5 @@
-package src.com.startjava.lesson_2_3_4.calculator;
+package com.startjava.lesson_2_3_4.calculator;
+
 import java.util.Scanner;
 
 public class CalculatorTest {
@@ -16,15 +17,15 @@ public class CalculatorTest {
     }
 
     private static void createQuestionToContinue() {
-        System.out.println("Хотите продолжить вычисления? [yes/no]:");
-        String answer = scan.nextLine();
-        if (answer.equals("yes")) {
-            createCalc();
-            createQuestionToContinue();
-        } else if (answer.equals("no")) {
-            return;
-        } else {
-            createQuestionToContinue();
-        }
+        String answer;
+        do {
+            System.out.println("Хотите продолжить вычисления? [yes/no]:");
+            answer = scan.nextLine();
+            if (answer.equals("yes")) {
+                createCalc();
+            } else if (answer.equals("no")) {
+                break;
+            }
+        } while (!answer.equals("yes") || !answer.equals("no"));
     }
 }

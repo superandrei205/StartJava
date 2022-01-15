@@ -1,33 +1,27 @@
-package src.com.startjava.lesson_2_3_4.calculator;
+package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    public int calculate(String example) {
+    public int calculate(String mathExpression) {
         int result = 0;
-        String[] arr = example.split(" ");
+        String[] mathExpressionInArr = mathExpression.split(" ");
 
-        int a = Integer.parseInt(arr[0]);
-        char mathOperation = arr[1].charAt(0);
-        int b = Integer.parseInt(arr[2]);
+        int a = Integer.parseInt(mathExpressionInArr[0]);
+        char mathOperation = mathExpressionInArr[1].charAt(0);
+        int b = Integer.parseInt(mathExpressionInArr[2]);
 
         switch (mathOperation) {
             case '+':
-                result = Math.addExact(a, b);
-                break;
+                return Math.addExact(a, b);
             case '-':
-                result = Math.subtractExact(a, b);
-                break;
+                return Math.subtractExact(a, b);
             case '*':
-                result = Math.multiplyExact(a, b);
-                break;
+                return Math.multiplyExact(a, b);
             case '/':
-                result = a / b;
-                break;
+                return a / b;
             case '^':
-                result = (int) Math.pow(a, b);
-                break;
+                return (int) Math.pow(a, b);
             case '%':
-                result = Math.floorMod(a ,b);
-                break;
+                return Math.floorMod(a ,b);
         }
 
         return result;
