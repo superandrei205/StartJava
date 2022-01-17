@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
-    private int number;
-    private int index = 0;
+    private int index;
     private int[] answers = new int[10];
 
     public Player(String name) {
@@ -16,24 +15,20 @@ public class Player {
         return name;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public int getCurrentAnswer() {
+        return this.answers[index - 1];
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setAnswers(int number, int index) {
+    public void setAnswer(int number, int index) {
         this.answers[index] = number;
     }
 
     public int[] getAnswers() {
-        return answers;
+        return Arrays.copyOf(answers, index);
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setIndex() {
+        index++;
     }
 
     public int getIndex() {
@@ -41,7 +36,7 @@ public class Player {
     }
 
     public void resetAnswers() {
-        setIndex(0);
-        Arrays.fill(answers, 0, getIndex(), 0);
+        index = 0;
+        Arrays.fill(answers, 0, index, 0);
     }
 }
