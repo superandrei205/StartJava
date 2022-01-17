@@ -1,6 +1,5 @@
 package com.startjava.lesson_2_3_4.game;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessNumber {
@@ -18,10 +17,11 @@ public class GuessNumber {
 
     public void play() {
         Player currentPlayer = player1;
-        while (true && player2.getIndex() < 10) {
+        while (player2.getIndex() < 10) {
             inputNumber(currentPlayer);
             if (compareNumbers(currentPlayer)) {
-                System.out.println("Игрок " + currentPlayer.getName() + " угадал число " + currentPlayer.getCurrentAnswer() + " с " + currentPlayer.getIndex() + " попытки");
+                System.out.println("Игрок " + currentPlayer.getName() + " угадал число "
+                        + currentPlayer.getCurrentAnswer() + " с " + currentPlayer.getIndex() + " попытки");
                 break;
             }
             if (currentPlayer.getIndex() >= 10) {
@@ -29,7 +29,10 @@ public class GuessNumber {
             }
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
-        showResults();
+        showResults(player1);
+        showResults(player2);
+        player1.resetAnswers();
+        player2.resetAnswers();
     }
 
     private void inputNumber(Player player) {
@@ -51,18 +54,11 @@ public class GuessNumber {
         return false;
     }
 
-    private void showResults() {
-        int[] attemptsPlayer1 = Arrays.copyOf(player1.getAnswers(), player1.getIndex());
-        System.out.print("Ответы " + player1.getName() + " : ");
-        for (int answer : attemptsPlayer1)
+    private void showResults(Player player) {
+        int[] attemptsPlayer = player.getAnswers();
+        System.out.print("Ответы " + player.getName() + " : ");
+        for (int answer : attemptsPlayer)
             System.out.print(answer + " ");
         System.out.println();
-        int[] attemptsPlayer2 = Arrays.copyOf(player2.getAnswers(), player2.getIndex());
-        System.out.print("Ответы " + player2.getName() + " : ");
-        for (int answer : attemptsPlayer2)
-            System.out.print(answer + " ");
-        System.out.println();
-        player1.resetAnswers();
-        player2.resetAnswers();
     }
 }
