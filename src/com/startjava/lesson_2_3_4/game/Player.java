@@ -16,10 +16,10 @@ public class Player {
     }
 
     public int getCurrentAnswer() {
-        return this.answers[index - 1];
+        return answers[index - 1];
     }
 
-    public void setAnswer(int number, int index) {
+    public void setAnswer(int number) {
         this.answers[index] = number;
     }
 
@@ -27,7 +27,7 @@ public class Player {
         return Arrays.copyOf(answers, index);
     }
 
-    public void setIndex() {
+    public void incIndex() {
         index++;
     }
 

@@ -35,8 +35,8 @@ public class GuessNumber {
     private void inputNumber(Player player) {
         System.out.println(player.getName() + " Введите ответ");
         int number = scan.nextInt();
-        player.setAnswer(number, player.getIndex());
-        player.setIndex();
+        player.setAnswer(number);
+        player.incIndex();
     }
 
     private boolean compareNumbers(Player player) {
